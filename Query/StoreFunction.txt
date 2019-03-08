@@ -1,0 +1,11 @@
+CREATE DEFINER=`root`@`localhost` FUNCTION `calculate_earning`(
+  flname_param  VARCHAR(20)
+) RETURNS decimal(10,0)
+BEGIN
+  DECLARE earn_var DECIMAL; 
+	select sum(Fare*Passenger_Travelling)
+	into earn_var
+	from flight
+	where Flight_Name = flname_param;
+ RETURN earn_var;
+END

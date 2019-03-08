@@ -1,0 +1,50 @@
+
+
+CREATE DATABASE IF NOT EXISTS JDBC_Project;
+USE JDBC_Project;
+
+CREATE TABLE flight (
+	fl_id INTEGER AUTO_INCREMENT NOT NULL,
+	Flight_Name VARCHAR(20) NOT NULL,
+	ArrivingFrom VARCHAR(20) NOT NULL,
+    ArrivalTime TIME(0) NOT NULL,
+	Departure VARCHAR(20),
+	DepartureTime TIME(0) NOT NULL,
+	Fare DECIMAL(7,2) NOT NULL,
+    Passenger_Travelling INTEGER NOT NULL,
+	SeatsLeft INTEGER NOT NULL,
+    CONSTRAINT flight_pk
+      PRIMARY KEY (fl_id),
+    CONSTRAINT fl_id_unq
+      UNIQUE (fl_id)
+);
+
+INSERT INTO flight VALUES ( null, 'AE-380','Dublin', 173033,'Amsterdam', 184000, 63.50, 102, 12);
+INSERT INTO flight VALUES ( null, 'AB-350','Zurich', 124500,'Madrid', 022000, 45.00, 111, 09);
+INSERT INTO flight VALUES ( null, 'MC-740','Paris', 235000,'London', 045000, 76.20, 104, 14);
+INSERT INTO flight VALUES ( null, 'BC-420','Abu Dhabi', 044000,'London', 152033, 68.50, 117, 03);
+INSERT INTO flight VALUES ( null, 'BK-220','Muscat', 031500,'Dublin', 152000, 99.30, 73, 07);
+INSERT INTO flight VALUES ( null, 'BB-870','Las Vegas', 173033,'Abu Dhabi', 103000, 54.70, 109, 11);
+INSERT INTO flight VALUES ( null, 'AA-710','Munich', 174000,'Istanbul', 152000, 23.50, 99, 06);
+INSERT INTO flight VALUES ( null, 'ZA-330','Barcelona', 152000,'Zurich', 185000, 56.00, 109, 01);
+INSERT INTO flight VALUES ( null, 'BB-550','Dublin', 165000,'Amsterdam', 202000, 77.50, 100, 00);
+INSERT INTO flight VALUES ( null, 'MG-200','Amsterdam', 183000,'London', 124500, 22.20, 112, 08);
+INSERT INTO flight VALUES ( null, 'AF-016','Geneva', 202500,'Washington', 142500, 63.60, 118, 02);
+INSERT INTO flight VALUES ( null, 'FF-100','Zurich', 173033,'New York', 034500, 89.50, 115, 05);
+INSERT INTO flight VALUES ( null, 'BF-390','Las Vegas', 234500,'Washington', 051000, 43.10, 98, 12);
+INSERT INTO flight VALUES ( null, 'VA-380','Munich', 054000,'Sydney', 152000, 61.50, 67, 13);
+INSERT INTO flight VALUES ( null, 'ED-770','Paris', 173000,'Dublin', 065500, 34.00, 113, 07);
+
+select * from flight;
+
+CREATE TABLE flight_audit(
+    A_fl_id INTEGER NOT NULL,
+	A_Flight_Name VARCHAR(20) NOT NULL,
+	action_type     VARCHAR(50),
+    action_date     DATETIME NOT NULL
+
+);
+
+select * from flight_audit;
+
+

@@ -1,0 +1,35 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_flight`(
+    fl_id_param INTEGER,
+	Flight_Name_param VARCHAR(20),
+	ArrivingFrom_param VARCHAR(20),
+    ArrivalTime_param TIME(0),
+	Departure_param VARCHAR(20),
+	DepartureTime_param TIME(0),
+	Fare_param DECIMAL(7,2),
+    Passenger_Travelling_param INTEGER,
+	SeatsLeft_param INTEGER
+)
+BEGIN
+DECLARE sql_error TINYINT DEFAULT FALSE;
+  
+DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+SET sql_error = TRUE;
+    
+START TRANSACTION;  
+UPDATE flight
+  SET Flight_Name = Flight_Name_param,
+  ArrivingFrom = ArrivingFrom_param,
+  ArrivalTime = ArrivalTime_param,
+  Departure = Departure_param,
+  DepartureTime = DepartureTime_param,
+  Fare = Fare_param,
+  Passenger_Travelling = Passenger_Travelling_param,
+  SeatsLeft = SeatsLeft_param
+  WHERE fl_id = fl_id_param;
+  
+IF sql_error = FALSE THEN
+    COMMIT;
+  ELSE
+    ROLLBACK;
+  END IF;
+END

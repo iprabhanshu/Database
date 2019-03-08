@@ -1,0 +1,11 @@
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `flight_view` AS
+    SELECT 
+        `flight`.`Flight_Name` AS `Flight_Name`,
+        `flight`.`ArrivingFrom` AS `ArrivingFrom`,
+        `flight`.`ArrivalTime` AS `ArrivalTime`
+    FROM
+        `flight`
